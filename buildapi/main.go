@@ -74,10 +74,10 @@ func createCourse(w http.ResponseWriter, r *http.Request) {
 	var course Course
 	_ = json.NewDecoder(r.Body).Decode(&course)
 
-	// if course.IsEmpty() {
-	// 	json.NewEncoder(w).Encode("Please send course with id and name")
-	// 	return
-	// }
+	if course.IsEmpty() {
+		json.NewEncoder(w).Encode("Please send course with id and name")
+		return
+	}
 
 	// generate unique id, string
 	// append course to courses
